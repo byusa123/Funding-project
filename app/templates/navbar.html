@@ -1,0 +1,50 @@
+<div class="header"></div>
+<input type="checkbox" id="openSidebarMenu">
+<label for="openSidebarMenu" class="sidebarIconToggle">
+    <i class="fas fa-bars" id='sidebar_btn'></i>
+
+</label>
+
+<div class="left_area">
+    <h3>U<span>Fund</span></h3>
+</div>
+<div id="sidebarMenu">
+
+    {% if current_user.image_pic_path %}
+    <a href="{{url_for('main.update_pic',name=current_user.username)}}" id='pic'><img class="rounded-circle z-depth-2" id='prof'
+            src="{{url_for('static',filename=current_user.image_pic_path)}}" alt="" width='100' data-holder-rendered="true"></a>
+
+    {% else %}
+    <a href="{{url_for('main.update_pic',name=current_user.username)}}" id='pic'><img class="rounded-circle z-depth-2" id='prof'
+            src="https://res.cloudinary.com/ucynthy12/image/upload/v1607543371/kisspng-avatar-user-profile-male-logo-profile-icon-5b238cb002ed52.870627731529056432012-removebg-preview_seksvj.png"
+            alt="" width='100' data-holder-rendered="true"></a>
+    {% endif %}
+    <h4 class="text-center"
+        style="font-size: 20px;text-transform: capitalize;font-weight: bold;margin:5px;color: white;">
+        {{current_user.username}}</h4>
+
+
+    <ul class="menu">
+        <li><a href="/"><i class="fas fa-desktop"></i>&nbsp;&nbsp;<span>Home</span></a></li>
+
+        <li><a href="/ufund"><i class="fas fa-cogs"></i>&nbsp;&nbsp;<span>Fundraiser</span></a></li>
+        <li><a href=""><i class="fas fa-search"></i>&nbsp;&nbsp;<span>Search</span></a></li>
+        <li><a href="/create"><i class="fas fa-plus"></i>&nbsp;&nbsp;<span>Add a fundraiser</span></a></li>
+        {% if current_user.is_authenticated %}
+        <li><a href="{{url_for('auth.logout')}}"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;<span>Logout</span></a>
+        </li>
+
+        {% else %}
+        <li><a href="{{url_for('auth.register')}}"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;<span>Sign up</span></a>
+        </li>
+        <li><a href="{{url_for('auth.login')}}"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;<span>Login</span></a>
+        </li>
+
+
+        {% endif %}
+
+    </ul>
+</div>
+<div class="main">
+
+</div>

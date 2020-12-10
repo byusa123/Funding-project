@@ -1,0 +1,28 @@
+{% macro getFund(funds) %}
+
+    <!-- {% if funds %} -->
+    {% for fund in funds %}
+
+    <div class="card-deck">
+        <div class="card">
+            <img class="card-img-top" src="{{fund.profile_pic_path}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{fund.title}}</h5>
+                <h6 class="card-subtitle">{{fund.description}}</h6>
+                <p class="card-text">{{fund.content| truncate (100)}}</p>
+                <p class="card-text"><small class="text-muted">{{fund.posted.strftime('%B %d, %Y')}}</small></p>
+            </div>
+        </div>
+
+
+    </div>
+    {% endfor %}
+
+    <!-- {% else %}
+    <div class="card w-90 mb-3">
+        <div class="card-body">
+            <p class="card-title">No posts yet in this category</p>
+        </div>
+    </div>
+    {% endif %} -->
+{% endmacro %}

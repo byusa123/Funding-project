@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block styles %}
+{{super()}}
+<style>
+    .container {
+        margin-top: 10%;
+        border: 1px solid rgb(253, 249, 249);
+        border-radius: 10px;
+        width: 50%;
+        padding: 10px 30px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    input[type=submit] {
+        background-color: #00b7ff;
+        color: white;
+    }
+
+    /* .container {
+            margin-left: 250px;
+        
+            height: 100vh;
+            transition: 0.5s;
+        } */
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"> </div>
+        <div class="col-md-8">
+            <h3 class="text-center">Log in</h3>
+            {{wtf.quick_form(login_form)}}
+            <p> Don't have an account?<a href="{{url_for('auth.register')}}"
+                    style="border: 1px solid rgb(160, 160, 252); border-radius: 5px; padding: 5px;margin:5px ;color:rgb(32, 203, 233)">Sign
+                    Up</a>
+            </p>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% block styles%}
+{{ super() }}
+<style>
+    .container {
+        margin-left: 250px;
+        
+        height: 100vh;
+        transition: 0.5s;
+    }
+
+    #check:checked~.container {
+        margin-left: 60px;
+    }
+</style>
+
+{% endblock %}
+{% block content %}
+<div class="container">
+
+    <h2 class="text-center" style="font-family: 'Cinzel', serif; text-decoration: underline; margin-bottom: 30px;">
+        Recent Fundraiser</h2>
+
+</div>
+
+
+
+{% endblock %}

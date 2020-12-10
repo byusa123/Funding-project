@@ -1,0 +1,294 @@
+{% extends 'bootstrap/base.html'%}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to UFund</title>
+    {%  block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/styles.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+    <style>
+        /* #header {
+            position: fixed;
+            background: #22242A;
+            margin-top: 0;
+            padding: 30px;
+            width: 100%;
+            height: 40px;
+        }
+
+        .left_area h3 {
+            color: #fff;
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 22px;
+            font-weight: 900;
+
+        }
+
+        .left_area span {
+            color: #1DC4E7;
+        }
+
+        .logout-bn {
+            padding: 5px;
+            background: #19b303;
+            text-decoration: none;
+            float: right;
+            margin-top: -30px;
+            margin-right: 40px;
+            border-radius: 2px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            transition: 0.5s;
+            transition-property: background;
+
+        }
+
+        .logout_btn:hover {
+            background: #0D9DBB;
+        }
+
+        .sidebar {
+            background: #2F323A;
+            margin-top: 70px;
+            padding-top: 30px;
+            position: fixed;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            transition: 0.5s;
+            transition-property: left;
+        }
+
+        .sidebar .profile_image {
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar h4 {
+            color: #ccc;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            color: #fff;
+            display: block;
+            width: 100%;
+            line-height: 60px;
+            text-decoration: none;
+            padding-left: 40px;
+            box-sizing: border-box;
+            transition: 0.5s;
+            transition-property: background;
+
+        }
+
+        .sidebar a:hover {
+            background: #19B303;
+        }
+
+        .sidebar i {
+            padding-right: 10px;
+        }
+
+        label #sidebar_btn {
+            z-index: 1;
+            color: rgb(22, 21, 21);
+            position: fixed;
+            cursor: pointer;
+            font-size: 20px;
+            left: 300px;
+            margin: 5px 0;
+            transition: 0.5s;
+            transition-property: color;
+        }
+
+        label #sidebar_btn:hover {
+            color: #19b3d3;
+        }
+
+        #check:checked~.sidebar {
+            left: -190px;
+        }
+
+        #check:checked~.sidebar a span {
+            display: none;
+
+        }
+
+        #check:checked~.sidebar a {
+            font-size: 20px;
+            margin-left: 170px;
+            width: 80px;
+        } */
+
+        /* .content {
+            margin-left: 250px;
+            /* background: url('https://images.unsplash.com/photo-1506869673173-31eba16560ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80') no-repeat; */
+        /* background-position: center;
+            background-size: cover;
+            height: 100vh;
+            transition: 0.5s;
+        } */
+        /* #check:checked~.content {
+            margin-left: 60px; */
+        /* }
+
+        #check {
+            display: none;
+        }  */
+        html,
+        body {
+            /* overflow: hidden; */
+            height: 100%;
+        }
+
+        body {
+            padding: 0%;
+            margin: 0;
+        }
+
+        .header {
+            background: #22242A;
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            z-index: 10;
+
+
+        }
+
+        .left_area h3 {
+            color: #fff;
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 22px;
+            font-weight: 900;
+            z-index: 20;
+            margin-left: 50px;
+            position: absolute;
+
+
+
+        }
+
+        .left_area span {
+            color: #1DC4E7;
+            font-size: 25px;
+        }
+
+
+
+        .sidebarIconToggle {
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            z-index: 20;
+            top: 22px;
+            left: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .sidebarIconToggle:hover {
+            color: #19b3d3;
+        }
+
+
+
+        #sidebarMenu {
+            font-size: 12px;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            margin-top: 60px;
+            background-color: #2e86de;
+            transform: translateX(-250px);
+            transition: transform 250ms ease-in-out;
+        }
+
+        #openSidebarMenu:checked~#sidebarMenu {
+            transform: translateX(0);
+
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .menu li a {
+            color: #fff;
+            display: block;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 20px;
+            transition: 0.5s;
+            transition-property: background;
+        }
+        img#prof{
+            margin-top: 20px;
+            margin-left: 65px;
+            box-shadow: inset 0 0 25px 25px #fff;
+        }
+
+
+
+
+        .menu li a:hover {
+            background: #19B303;
+        }
+    </style>
+
+
+    {% endblock %}
+
+</head>
+
+<body>
+    {% block navbar %}
+    {% include 'navbar.html' %}
+    {% endblock %}
+    {% block content %}
+
+
+
+
+    {% endblock %}
+    {% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    {% endblock %}
+</body>
+
+</html>

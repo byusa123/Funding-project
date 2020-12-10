@@ -1,12 +1,20 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{%  block styles %}
+{{super()}}
+<style>
+    .content {
+        margin-left: 250px;
 
-<head>
+        height: 100vh;
+        transition: 0.5s;
+    }
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <h1>hello there</h1>
-</body>
-</html>
+    #check:checked~.content {
+        margin-left: 60px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
