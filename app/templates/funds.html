@@ -1,4 +1,6 @@
 {% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
 {% block styles%}
 {{ super() }}
 <style>
@@ -20,7 +22,8 @@
 
     <h2 class="text-center" style="font-family: 'Cinzel', serif; text-decoration: underline; margin-bottom: 30px;">
         Recent Fundraiser</h2>
-
+        {{macro.getFund(education)}}
+        
 </div>
 
 
